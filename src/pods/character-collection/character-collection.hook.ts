@@ -9,16 +9,18 @@ export const useCharacterCollection = () => {
   const [characterCollection, setCharacterCollection] = React.useState<
     CharacterEntityVm[]
   >([]);
+  const [pages, SetPages] = React.useState(0);
 
-  const loadCharacterCollection = async () => {
+  const loadCharacterCollection = async (page: number, character: string) => {
     try {
-      const result = await getCharacterCollection();
-      setCharacterCollection(mapToCollection(result, mapFromApiToVm));
+      const result = await getCharacterCollection(page, character);
+      SetPages(result.info.pages);
+      setCharacterCollection(mapToCollection(result.results, mapFromApiToVm));
     } catch (error) {
       setCharacterCollection([]);
       throw Error(error);
     }
   };
 
-  return { characterCollection, loadCharacterCollection };
+  return { characterCollection, pages, loadCharacterCollection };
 };

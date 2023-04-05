@@ -5,13 +5,15 @@ import { useCharacterCollection } from './character-collection.hook';
 import { CharacterCollectionComponent } from './character-collection.component';
 
 export const CharacterCollectionContainer = () => {
-  const { characterCollection, loadCharacterCollection } =
+  const { characterCollection, loadCharacterCollection, pages } =
     useCharacterCollection();
   const history = useHistory();
+  const [page, setPage] = React.useState(1);
+  const [character, setCharacter] = React.useState('');
 
   React.useEffect(() => {
-    loadCharacterCollection();
-  }, []);
+    loadCharacterCollection(page, character);
+  }, [page, character]);
 
   const handleEdit = (id: number) => {
     history.push(linkRoutes.editCharacter(id));
@@ -21,6 +23,11 @@ export const CharacterCollectionContainer = () => {
     <CharacterCollectionComponent
       characterCollection={characterCollection}
       onEdit={handleEdit}
+      page={page}
+      setPage={setPage}
+      pages={pages}
+      character={character}
+      setCharacter={setCharacter}
     />
   );
 };

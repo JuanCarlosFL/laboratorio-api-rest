@@ -7,6 +7,12 @@ export const root = css`
   }
 `;
 
+export const center = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const list = css`
   display: grid;
   grid-template-columns: repeat(1, 1fr);

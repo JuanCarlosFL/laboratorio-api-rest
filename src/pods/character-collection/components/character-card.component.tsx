@@ -21,7 +21,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
   const { character, onEdit } = props;
 
   return (
-    <Card>
+    <Card style={{ minWidth: '384px' }}>
       <CardHeader
         avatar={
           <Avatar aria-label="Character">
