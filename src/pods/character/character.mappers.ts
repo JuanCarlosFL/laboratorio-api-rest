@@ -14,10 +14,12 @@ export const mapCharacterFromApiToVm = (
   status: character.status,
   type: character.type,
   url: character.url,
+  bestSentences: character.bestSentences,
 });
 
 export const mapCharacterFromVmToApi = (
-  character: viewModel.Character
+  character: viewModel.Character,
+  sentence: string
 ): apiModel.Character =>
   ({
     ...character,
@@ -30,4 +32,5 @@ export const mapCharacterFromVmToApi = (
     status: character.status,
     type: character.type,
     url: character.url,
+    bestSentences: [...character.bestSentences, sentence],
   } as unknown as apiModel.Character);

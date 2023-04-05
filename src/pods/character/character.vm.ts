@@ -8,6 +8,7 @@ export interface Character {
   image: string;
   url: string;
   created: Date;
+  bestSentences: string[];
 }
 
 export const createEmptyCharacter = (): Character => ({
@@ -20,4 +21,5 @@ export const createEmptyCharacter = (): Character => ({
   species: '',
   type: '',
   url: '',
+  bestSentences: [],
 });

@@ -13,6 +13,7 @@ import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import { Gender, Status, Species } from 'common/enums';
 import { Character } from '../character.vm';
 import * as classes from './character-card.styles';
+import { BestSentencesComponent } from 'common/components';
 
 interface Props {
   character: Character;
@@ -55,6 +56,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
               ? '👨'
               : '👩'}
           </Typography>
+          <BestSentencesComponent bestSentences={character.bestSentences} />
         </div>
       </CardContent>
       <CardActions>

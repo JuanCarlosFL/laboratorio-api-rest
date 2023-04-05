@@ -4,6 +4,7 @@ export const root = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: 1rem;
 `;
 
 export const container = css`

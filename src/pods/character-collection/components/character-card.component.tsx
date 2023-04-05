@@ -11,6 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { CharacterEntityVm } from '../character-collection.vm';
 import * as classes from './character-card.styles';
 import { Gender, Status, Species } from 'common/enums';
+import { BestSentencesComponent } from 'common/components';
 
 interface Props {
   character: CharacterEntityVm;
@@ -53,6 +54,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
               ? '👨'
               : '👩'}
           </Typography>
+          <BestSentencesComponent bestSentences={character.bestSentences} />
         </div>
       </CardContent>
       <CardActions>

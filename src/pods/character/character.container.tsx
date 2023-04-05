@@ -32,8 +32,8 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     }
   }, []);
 
-  const handleSave = async (character: Character) => {
-    const apiCharacter = mapCharacterFromVmToApi(character);
+  const handleSave = async (character: Character, sentence: string) => {
+    const apiCharacter = mapCharacterFromVmToApi(character, sentence);
     const success = await api.saveCharacter(apiCharacter);
     if (success) {
       history.goBack();
