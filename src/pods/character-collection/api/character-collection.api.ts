@@ -1,11 +1,35 @@
-import axios from 'axios';
+import { graphQLClient } from 'core/api/graphql.client';
+import { gql } from 'graphql-request';
 
 import {
   CharacterEntityApi,
   CharacterEntityItemApi,
 } from './character-collection.api-model';
-import { url } from 'common/constants';
+
+interface GetCharacterCollectionResponse {
+  characters: CharacterEntityApi;
+}
 
 export const getCharacterCollection = async (): Promise<
   CharacterEntityItemApi[]
-> => (await axios.get<CharacterEntityApi>(url)).data.results;
+> => {
+  const query = gql`
+    query {
+      characters {
+        results {
+          id
+          name
+          status
+          species
+          gender
+          image
+        }
+      }
+    }
+  `;
+
+  const { characters } =
+    await graphQLClient.request<GetCharacterCollectionResponse>(query);
+
+  return characters.results;
+};
